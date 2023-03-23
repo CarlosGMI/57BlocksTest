@@ -12,7 +12,7 @@
     <li>
       <nuxt-link
         @click="$emit('itemClicked')"
-        class="cta bg-blue-500 hover:bg-blue-600 px-3 py-2 rounded text-white font-semibold"
+        class="btn btn--small btn--secondary"
         :class="buttonClasses"
         to="/login"
       >

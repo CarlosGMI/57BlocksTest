@@ -1,0 +1,17 @@
+.btn {
+  -webkit-transition: all 0.25s;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+.btn--small {
+  padding: 2.4px 24px;
+}
+
+.btn--secondary {
+  background: theme('colors.white');
+  color: theme('colors.black');
+  border: 1px solid theme('colors.black');
+  border-radius: 1rem;
+}

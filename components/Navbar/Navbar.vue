@@ -13,7 +13,9 @@
 
       <!-- Navbar -->
       <div class="hidden md:block">
-        <NavbarNavigation list-classes="flex space-x-8 text-regular" />
+        <NavbarNavigation
+          list-classes="flex items-center space-x-8 text-regular"
+        />
       </div>
 
       <!-- Dark Background Transition -->
