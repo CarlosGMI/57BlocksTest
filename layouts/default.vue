@@ -1,5 +1,6 @@
 <template>
   <div>
-    <h2>Default Layout</h2>
+    <h1>Open Positions</h1>
+    <h2>Change The World With Top Brands</h2>
   </div>
 </template>

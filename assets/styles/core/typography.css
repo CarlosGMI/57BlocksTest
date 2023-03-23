@@ -1,0 +1,68 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+p,
+a,
+li,
+em,
+strong,
+i,
+sup,
+label,
+span,
+select {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizelegibility;
+}
+
+html {
+  font-size: 16px;
+}
+
+html,
+body {
+  font-family: theme('fontFamily.body');
+}
+
+body {
+  font-size: theme('fontSize.large');
+}
+
+body {
+  overflow-x: hidden;
+}
+
+h1,
+.h1 {
+  font-family: theme('fontFamily.headings');
+  font-size: theme('fontSize.h-mobile');
+  font-weight: 700;
+  line-height: 31px;
+
+  @screen md {
+    font-size: theme('fontSize.h1');
+    line-height: 94px;
+  }
+}
+
+h2,
+.h2 {
+  font-family: theme('fontFamily.headings');
+  font-size: theme('fontSize.h-mobile');
+  font-weight: 700;
+  line-height: 36px;
+
+  @screen md {
+    font-size: theme('fontSize.h2');
+    line-height: 44px;
+  }
+}
