@@ -10,11 +10,16 @@
   "devDependencies": {
     "@nuxt/image-edge": "^1.0.0-27991759.1a5eea1",
     "@nuxtjs/tailwindcss": "^6.6.4",
+    "@types/bcryptjs": "^2.4.2",
+    "@types/cookie-signature": "^1.1.0",
+    "@types/node": "^18.15.7",
     "dotenv": "^16.0.2",
     "nuxt": "^3.3.1"
   },
   "dependencies": {
     "@pinia/nuxt": "^0.4.7",
+    "bcryptjs": "^2.4.3",
+    "cookie-signature": "^1.2.1",
     "vee-validate": "^4.8.4"
   }
 }
