@@ -1,0 +1,45 @@
+form {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-bottom: 20px;
+}
+
+input,
+textarea {
+  border-bottom: 2px solid theme('colors.charcoal');
+  border-radius: 0;
+  background: transparent;
+  box-sizing: border-box;
+  color: theme('colors.black');
+  font-size: theme('fontSize.regular');
+  line-height: 29px;
+  width: 100%;
+
+  @screen md {
+    font-size: theme('fontSize.h-mobile');
+    line-height: 44px;
+  }
+}
+
+input:focus {
+  outline: 0;
+}
+
+input.invalid {
+  border-color: theme('colors.red');
+}
+
+form .form-group {
+  width: 100%;
+  text-align: left;
+}
+
+form .form-group:not(:first-child) {
+  margin-top: 2rem;
+
+  @screen md {
+    margin-top: 3rem;
+  }
+}

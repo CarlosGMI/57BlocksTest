@@ -25,7 +25,10 @@ module.exports = {
       },
       colors: {
         black: '#000000',
+        charcoal: '#272c2f',
         white: '#FFFFFF',
+        blue: '#3cdff5',
+        red: '#f44',
         'black-light-rgba': 'rgba(0,0,0,.8)',
       },
     },

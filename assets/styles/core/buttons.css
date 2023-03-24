@@ -3,10 +3,26 @@
   text-decoration: none;
   display: inline-block;
   text-align: center;
+  padding: 4.8px 24px;
 }
 
 .btn--small {
   padding: 2.4px 24px;
+}
+
+.btn--primary {
+  background: theme('colors.white');
+  color: theme('colors.black');
+  border: 2px solid theme('colors.black');
+  border-radius: 36px;
+  font-size: theme('fontSize.h-mobile');
+  transition: background 0.3s linear;
+}
+
+.btn--primary:hover {
+  background: theme('colors.black');
+  border-color: theme('colors.white');
+  color: theme('colors.white');
 }
 
 .btn--secondary {
