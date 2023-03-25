@@ -25,24 +25,13 @@ const errorMessage = ref(null)
 const totalPages = ref(1)
 const totalResults = ref(1)
 
-onMounted(async () => {
-  try {
-    if (props.listType === 'favourites') {
-      console.log('Fetching favourites...')
-    } else {
-      const response = await getMovies()
-      movies.value = response.results
-      totalPages.value = response.total_pages
-      totalResults.value = response.total_results
-    }
-  } catch (error) {
-    console.error(error)
+const setListParams = (response) => {
+  movies.value = response.results
+  totalPages.value = response.total_pages
+  totalResults.value = response.total_results
+}
 
-    errorMessage.value = error.data.message
-  }
-})
-
-const onPageUpdated = async (page) => {
+const fetchMovies = async (page = 1) => {
   try {
     movies.value = null
 
@@ -50,14 +39,21 @@ const onPageUpdated = async (page) => {
       console.log('Fetching favourites...')
     } else {
       const response = await getMovies(page)
-      movies.value = response.results
-      totalPages.value = response.total_pages
-      totalResults.value = response.total_results
+
+      setListParams(response)
     }
   } catch (error) {
     console.error(error)
 
     errorMessage.value = error.data.message
   }
+}
+
+onMounted(async () => {
+  fetchMovies()
+})
+
+const onPageUpdated = async (page) => {
+  fetchMovies(page)
 }
 </script>
