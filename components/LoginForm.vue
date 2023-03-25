@@ -13,7 +13,6 @@
         Login
       </button>
     </form>
-    <p>{{ currentUser }}</p>
   </div>
 </template>
 
@@ -23,7 +22,7 @@ import TextInput from './Inputs/TextInput.vue'
 import { useForm } from 'vee-validate'
 
 const { handleSubmit } = useForm()
-const { login, currentUser } = useAuth()
+const { login } = useAuth()
 const errorMessage = ref(null)
 
 const onSubmit = handleSubmit(async (values) => {

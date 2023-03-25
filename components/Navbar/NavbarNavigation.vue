@@ -1,6 +1,6 @@
 <template>
   <ul :class="listClasses">
-    <li v-for="(item, index) in menuItems" :key="index">
+    <li v-for="(item, index) in allowedMenuItems" :key="index">
       <nuxt-link
         @click="$emit('itemClicked')"
         :class="itemClasses"
@@ -11,46 +11,57 @@
     </li>
     <li>
       <nuxt-link
-        @click="$emit('itemClicked')"
+        @click="handleLoginButton"
         class="btn btn--small btn--secondary"
         :class="buttonClasses"
         to="/login"
       >
-        Login
+        {{ buttonText }}
       </nuxt-link>
     </li>
   </ul>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      menuItems: [
-        {
-          label: 'Home',
-          link: '/',
-        },
-        {
-          label: 'My Favourites',
-          link: '/',
-        },
-      ],
-    }
+<script setup>
+import { computed } from 'vue'
+
+const emit = defineEmits(['itemClicked'])
+const { currentUser } = useAuth()
+const props = defineProps({
+  listClasses: String,
+  type: String,
+})
+const menuItems = [
+  {
+    label: 'Home',
+    link: '/',
+    needAuth: true,
   },
-  props: {
-    listClasses: String,
-    type: String,
+  {
+    label: 'My Favourites',
+    link: '/',
+    needAuth: true,
   },
-  computed: {
-    itemClasses() {
-      return this.type === 'mobile' ? 'my-4 inline-block' : ''
-    },
-    buttonClasses() {
-      return this.type === 'mobile'
-        ? 'my-8 w-full text-center inline-block'
-        : ''
-    },
-  },
+]
+const itemClasses = computed(() => {
+  return props.type === 'mobile' ? 'my-4 inline-block' : ''
+})
+const buttonClasses = computed(() => {
+  return props.type === 'mobile' ? 'my-8 w-full text-center inline-block' : ''
+})
+// If user is logged in return all elements. If not, return only the ones that do not need authentication
+const allowedMenuItems = computed(() => {
+  return menuItems.filter((item) => (currentUser.value ? true : !item.needAuth))
+})
+const buttonText = computed(() => {
+  return currentUser.value ? 'Logout' : 'Login'
+})
+const handleLoginButton = async () => {
+  if (currentUser.value) {
+    console.log('Logging out...')
+  }
+
+  emit('itemClicked')
+  await navigateTo('/login')
 }
 </script>
