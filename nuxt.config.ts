@@ -9,6 +9,7 @@ export default defineNuxtConfig({
       process.env.COOKIE_REMEMBER_ME_EXPIRES || ONE_DAY.toString(),
       10
     ),
+    movieDbApiKey: process.env.MOVIEDB_API_KEY,
   },
   modules: ['@nuxtjs/tailwindcss', '@nuxt/image-edge', '@pinia/nuxt'],
   css: ['@/assets/styles/index.css'],

@@ -1,5 +1,7 @@
 <template>
-  <h1>Homepage</h1>
+  <div class="container pt-10">
+    <MoviesList />
+  </div>
 </template>
 
 <script setup>
