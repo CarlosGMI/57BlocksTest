@@ -26,7 +26,7 @@
 import { computed } from 'vue'
 
 const emit = defineEmits(['itemClicked'])
-const { currentUser } = useAuth()
+const { currentUser, logout } = useAuth()
 const props = defineProps({
   listClasses: String,
   type: String,
@@ -58,7 +58,7 @@ const buttonText = computed(() => {
 })
 const handleLoginButton = async () => {
   if (currentUser.value) {
-    console.log('Logging out...')
+    await logout()
   }
 
   emit('itemClicked')

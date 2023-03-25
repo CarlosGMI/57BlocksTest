@@ -3,7 +3,7 @@ import { ClientUser } from '@/server/types/user'
 export const useAuth = () => {
   const currentUser = useState<ClientUser | null>('currentUser', () => null)
 
-  const setCurrentUser = (user: ClientUser) => {
+  const setCurrentUser = (user: ClientUser | null) => {
     currentUser.value = user
   }
 
@@ -19,6 +19,14 @@ export const useAuth = () => {
     setCurrentUser(data.user)
 
     return currentUser
+  }
+
+  const logout = async () => {
+    await $fetch('/auth/logout', {
+      method: 'POST',
+    })
+
+    setCurrentUser(null)
   }
 
   const me = async () => {
@@ -37,5 +45,5 @@ export const useAuth = () => {
     return currentUser
   }
 
-  return { login, me, currentUser }
+  return { login, logout, me, currentUser }
 }
