@@ -30,6 +30,7 @@ const onSubmit = handleSubmit(async (values) => {
     errorMessage.value = null
 
     await login(values.email, values.password)
+    navigateTo('/')
   } catch (error) {
     errorMessage.value = error.data.message
 
