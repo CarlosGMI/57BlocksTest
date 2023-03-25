@@ -1,5 +1,5 @@
 <template>
-  <div class="container pt-10">
+  <div class="container py-10">
     <MoviesList />
   </div>
 </template>

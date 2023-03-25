@@ -13,7 +13,7 @@
     >
       <p>{{ movie.original_title }}</p>
       <button
-        class="mt-3 rounded-[100%] text-white self-end flex items-center justify-center w-[32px] h-[32px] p-0"
+        class="mt-3 rounded-[100%] text-white hover:text-blue self-end flex items-center justify-center w-[32px] h-[32px] p-0"
       >
         <IconsHeart strokeColor="#3cdff5" />
       </button>
