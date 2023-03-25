@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar fixed w-full py-6 px-0 bg-white">
+  <nav class="navbar fixed w-full py-6 px-0 bg-white z-10">
     <div class="flex items-center justify-between container">
       <!-- Header logo -->
       <NavbarLogo />
