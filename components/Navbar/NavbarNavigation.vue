@@ -39,7 +39,7 @@ const menuItems = [
   },
   {
     label: 'My Favourites',
-    link: '/',
+    link: '/movies/favourites',
     needAuth: true,
   },
 ]

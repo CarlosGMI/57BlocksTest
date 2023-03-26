@@ -55,10 +55,6 @@ const props = defineProps({
     type: Number,
     required: true,
   },
-  perPage: {
-    type: Number,
-    default: 20,
-  },
 })
 const currentPage = ref(1)
 
@@ -68,7 +64,10 @@ const startPage = computed(() => {
   }
 
   if (currentPage.value === props.totalPages) {
-    return props.totalPages - visibleButtons + 1
+    const buttonsToShow =
+      props.totalPages > visibleButtons ? visibleButtons : props.totalPages
+
+    return props.totalPages - buttonsToShow + 1
   }
 
   return currentPage.value - 1

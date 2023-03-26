@@ -5,18 +5,24 @@ type FavouriteMovie = {
 }
 
 export const useMovies = () => {
+  const MOVIES_PER_PAGE = 20
   const { currentUser } = useAuth()
   const currentUserId = currentUser.value?.id || ''
   const favouriteMovies = useState<Array<FavouriteMovie>>('favourites', () => {
     if (process.server) {
       return
     }
+    console.log(currentUser.value)
 
-    return JSON.parse(localStorage.getItem(currentUser.value?.id || '') || '[]')
+    return JSON.parse(localStorage.getItem(currentUserId) || '[]')
   })
 
   const setFavouriteMovie = (movie: FavouriteMovie) => {
-    favouriteMovies.value.push(movie)
+    const newMovies = [...favouriteMovies.value]
+
+    newMovies.push(movie)
+
+    favouriteMovies.value = newMovies
   }
 
   const setFavouriteMovies = (movies: Array<FavouriteMovie>) => {
@@ -53,6 +59,20 @@ export const useMovies = () => {
     )
   }
 
+  const getFavouritesPaginationParams = () => {
+    return {
+      total_pages: Math.ceil(favouriteMovies.value.length / MOVIES_PER_PAGE),
+      total_results: favouriteMovies.value.length,
+    }
+  }
+
+  const paginateFavourites = (page: number) => {
+    return favouriteMovies.value.slice(
+      (page - 1) * MOVIES_PER_PAGE,
+      page * MOVIES_PER_PAGE
+    )
+  }
+
   const handleFavourites = (movie: FavouriteMovie) => {
     if (!favouriteMovies.value.length) {
       setFavouriteMovie(movie)
@@ -83,6 +103,8 @@ export const useMovies = () => {
     getMoviePosterFromPath,
     handleFavourites,
     findFavouriteById,
+    getFavouritesPaginationParams,
+    paginateFavourites,
     favouriteMovies,
   }
 }
