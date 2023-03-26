@@ -8,7 +8,7 @@ export const useAuth = () => {
   }
 
   const login = async (email: string, password: string) => {
-    const data = await $fetch('/auth/login', {
+    const data = await $fetch('/api/auth/login', {
       method: 'POST',
       body: {
         email,
@@ -22,7 +22,7 @@ export const useAuth = () => {
   }
 
   const logout = async () => {
-    await $fetch('/auth/logout', {
+    await $fetch('/api/auth/logout', {
       method: 'POST',
     })
 
@@ -33,7 +33,7 @@ export const useAuth = () => {
     const user = currentUser
 
     if (!user.value) {
-      const data = await $fetch('/auth/me', {
+      const data = await $fetch('/api/auth/me', {
         headers: useRequestHeaders(['cookie']) as HeadersInit,
       })
 

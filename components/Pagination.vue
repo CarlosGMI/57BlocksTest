@@ -1,6 +1,6 @@
 <template>
   <div class="pagination flex justify-center mt-10">
-    <ul class="list-none flex gap-2 bg-white py-2 px-5 rounded-2xl">
+    <ul class="list-none flex gap-2 bg-white py-2 px-5 rounded-2xl tile-shadow">
       <li class="mr-4">
         <button
           type="button"

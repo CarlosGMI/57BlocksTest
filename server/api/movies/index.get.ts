@@ -1,12 +1,9 @@
+import { useMovies } from '@/composables/useMovies'
+
 export default defineEventHandler(async (event) => {
-  const BASE_URL = 'https://api.themoviedb.org/3'
+  const { BASE_URL, apiError } = useMovies()
   const config = useRuntimeConfig()
   const { page } = getQuery(event)
-
-  const apiError = {
-    statusCode: 500,
-    message: 'Sorry, an error has occurred',
-  }
 
   if (!config.movieDbApiKey) {
     return createError(apiError)

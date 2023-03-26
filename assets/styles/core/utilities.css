@@ -13,4 +13,8 @@
       padding-right: 15px;
     }
   }
+
+  .tile-shadow {
+    box-shadow: 0 6.22478px 18.6744px rgb(25 84 102 / 8%);
+  }
 }
