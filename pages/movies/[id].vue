@@ -18,6 +18,7 @@
         <p class="mt-4">
           <span class="font-bold">Genres: </span>{{ movieGenres }}
         </p>
+        <MovieFavouriteButton :movie="movie" />
       </div>
       <div class="movie-details__poster mb-6 md:mb-0">
         <nuxt-img
@@ -31,6 +32,7 @@
 </template>
 
 <script setup>
+import MovieFavouriteButton from '@/components/Movies/MovieFavouriteButton.vue'
 import { ref, computed } from 'vue'
 const { getMovie, getMoviePosterFromPath } = useMovies()
 const route = useRoute()

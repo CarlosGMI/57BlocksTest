@@ -1,7 +1,6 @@
-import { useMovies } from '@/composables/useMovies'
+import { BASE_URL, apiError } from '../../utils/consts'
 
 export default defineEventHandler(async (event) => {
-  const { BASE_URL, apiError } = useMovies()
   const config = useRuntimeConfig()
   const { id } = getQuery(event)
 

@@ -1,5 +1,5 @@
 <template>
-  <nuxt-link :to="`/movies/${movie.id}`">
+  <a :href="`/movies/${movie.id}`">
     <div class="movie-tile flex flex-col rounded-2xl p-4 h-full tile-shadow">
       <figure class="movie-tile__poster">
         <nuxt-img
@@ -12,19 +12,16 @@
       <div
         class="movie-tile__details grid grid-rows-[max-content_1fr] h-full mt-3"
       >
-        <p>{{ movie.original_title }}</p>
-        <button
-          class="mt-3 rounded-[100%] text-white hover:text-blue self-end flex items-center justify-center w-[32px] h-[32px] p-0"
-        >
-          <IconsHeart strokeColor="#3cdff5" />
-        </button>
+        <p>{{ movie.title }}</p>
+        <MovieFavouriteButton :movie="movie" />
       </div>
     </div>
-  </nuxt-link>
+  </a>
 </template>
 
 <script setup>
 import { computed } from 'vue'
+import MovieFavouriteButton from './MovieFavouriteButton.vue'
 
 const props = defineProps({
   movie: {
