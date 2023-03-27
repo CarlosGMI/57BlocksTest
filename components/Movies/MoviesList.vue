@@ -1,24 +1,26 @@
 <template>
   <section class="movies-list">
-    <MoviesSearchInput
-      v-if="listType !== 'favourites'"
-      @search="onMovieSearch"
-    />
-    <MoviesGrid :movies="moviesList">
-      <template v-if="errorMessage" #error>
-        <p class="text-red text-center mb-5">{{ errorMessage }}</p>
-      </template>
-      <template v-if="noResults" #error>
-        <p class="text-center mb-5">{{ emptyMessage }}</p>
-      </template>
-    </MoviesGrid>
-    <Pagination
-      v-if="showPagination"
-      :page="currentPage"
-      :total-pages="totalPages"
-      :total="totalResults"
-      @pageUpdated="onPageUpdated"
-    />
+    <client-only>
+      <MoviesSearchInput
+        v-if="listType !== 'favourites'"
+        @search="onMovieSearch"
+      />
+      <MoviesGrid :movies="moviesList">
+        <template v-if="errorMessage" #error>
+          <p class="text-red text-center mb-5">{{ errorMessage }}</p>
+        </template>
+        <template v-if="noResults" #error>
+          <p class="text-center mb-5">{{ emptyMessage }}</p>
+        </template>
+      </MoviesGrid>
+      <Pagination
+        v-if="showPagination"
+        :page="currentPage"
+        :total-pages="totalPages"
+        :total="totalResults"
+        @pageUpdated="onPageUpdated"
+      />
+    </client-only>
   </section>
 </template>
 
