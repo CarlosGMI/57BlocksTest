@@ -1,10 +1,17 @@
-# Nuxt 3 Minimal Starter
+# 57Blocks Frontend Test
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+GIF
+
+This is a technical test for a Frontend Developer position at 57Blocks. This app uses Nuxt 3 as Vue.js framework and the [MovieDB API](https://developers.themoviedb.org/3/getting-started/introduction) to display a list of popular movies.
+
+## Deployed to Vercel
+
+https://57-blocks-test.vercel.app/
 
 ## Setup
 
-Make sure to install the dependencies:
+1. Clone this repository
+2. Make sure to install the dependencies:
 
 ```bash
 # yarn
@@ -15,6 +22,26 @@ npm install
 
 # pnpm
 pnpm install
+```
+
+3. This application uses [MovieDB API](https://developers.themoviedb.org/3/getting-started/introduction), so make sure to copy the `.env.example` file into a new `.env` file with a valid MovieDB API key.
+
+You could also set different env variables for cookie secret and expiration time.
+
+4. To login into the application you might want to use any of the existing dummy users:
+
+```
+--- User 1: ---
+Email: user@test.com
+Password: testuser
+
+--- User 2: ---
+Email: user2@test.com
+Password: testuser2
+
+--- User 3: ---
+Email: user3@test.com
+Password: testuser3
 ```
 
 ## Development Server
