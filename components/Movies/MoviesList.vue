@@ -117,11 +117,11 @@ const noResults = computed(() => {
   return !loading.value && !moviesList.value.length
 })
 const showPagination = computed(() => {
-  if (loading.value) {
+  if (loading.value && totalPages.value > 1) {
     return true
   }
 
-  return moviesList.value.length
+  return moviesList.value.length && totalPages.value > 1
 })
 
 watch(moviesList, () => {
