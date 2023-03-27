@@ -1,6 +1,6 @@
 # 57Blocks Frontend Test
 
-GIF
+![optimized](https://user-images.githubusercontent.com/22606306/228073794-6f07fa75-10b6-4f7e-a509-389a6103976f.gif)
 
 This is a technical test for a Frontend Developer position at 57Blocks. This app uses Nuxt 3 as Vue.js framework and the [MovieDB API](https://developers.themoviedb.org/3/getting-started/introduction) to display a list of popular movies.
 
