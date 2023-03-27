@@ -14,6 +14,7 @@
     </MoviesGrid>
     <Pagination
       v-if="showPagination"
+      :page="currentPage"
       :total-pages="totalPages"
       :total="totalResults"
       @pageUpdated="onPageUpdated"
@@ -93,6 +94,7 @@ const onPageUpdated = async (page) => {
 
 const onMovieSearch = async (term) => {
   searchTerm.value = term
+  currentPage.value = 1
 
   if (term) {
     fetchMovies(1, 'search', term)

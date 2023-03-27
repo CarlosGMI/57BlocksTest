@@ -128,12 +128,12 @@ const pageClasses = (page) => {
   return isPageActive(page) ? 'bg-blue' : ''
 }
 
-// watch(
-//   () => props.page,
-//   (val) => {
-//     currentPage.value = val
-//   }
-// )
+watch(
+  () => props.page,
+  (val) => {
+    currentPage.value = val
+  }
+)
 </script>
 
 <style scoped>
