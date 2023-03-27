@@ -8,14 +8,18 @@ export const useMovies = () => {
   const MOVIES_PER_PAGE = 20
   const { currentUser } = useAuth()
   const currentUserId = currentUser.value?.id || ''
-  const favouriteMovies = useState<Array<FavouriteMovie>>('favourites', () => {
-    if (process.server) {
-      return
-    }
-    console.log(currentUser.value)
+  const favouriteMovies = useState<Array<FavouriteMovie>>(
+    'favourites',
+    () => []
+  )
 
-    return JSON.parse(localStorage.getItem(currentUserId) || '[]')
-  })
+  const setFavouriteMovies = (movies: Array<FavouriteMovie> | null) => {
+    if (!process.server) {
+      favouriteMovies.value = movies
+        ? movies
+        : JSON.parse(localStorage.getItem(currentUserId) || '[]')
+    }
+  }
 
   const setFavouriteMovie = (movie: FavouriteMovie) => {
     const newMovies = [...favouriteMovies.value]
@@ -23,10 +27,6 @@ export const useMovies = () => {
     newMovies.push(movie)
 
     favouriteMovies.value = newMovies
-  }
-
-  const setFavouriteMovies = (movies: Array<FavouriteMovie>) => {
-    favouriteMovies.value = movies
   }
 
   const getMovies = async (page: Number = 1) => {
@@ -101,6 +101,7 @@ export const useMovies = () => {
     getMovies,
     getMovie,
     getMoviePosterFromPath,
+    setFavouriteMovies,
     handleFavourites,
     findFavouriteById,
     getFavouritesPaginationParams,

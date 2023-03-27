@@ -25,8 +25,12 @@ import { ref, reactive, computed, watch } from 'vue'
 const props = defineProps({
   listType: String,
 })
-const { getMovies, getFavouritesPaginationParams, paginateFavourites } =
-  useMovies()
+const {
+  getMovies,
+  setFavouriteMovies,
+  getFavouritesPaginationParams,
+  paginateFavourites,
+} = useMovies()
 let movies = reactive({
   list: [],
 })
@@ -71,6 +75,7 @@ const fetchMovies = async (page = 1) => {
 
 onMounted(async () => {
   fetchMovies()
+  setFavouriteMovies()
 })
 
 const onPageUpdated = async (page) => {
