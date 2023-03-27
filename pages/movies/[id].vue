@@ -34,7 +34,7 @@
 <script setup>
 import MovieFavouriteButton from '@/components/Movies/MovieFavouriteButton.vue'
 import { ref, computed } from 'vue'
-const { getMovie, getMoviePosterFromPath } = useMovies()
+const { getMovie, getMoviePosterFromPath, setFavouriteMovies } = useMovies()
 const route = useRoute()
 const movieId = route.params.id
 const movie = ref(null)
@@ -49,6 +49,8 @@ definePageMeta({
 })
 
 onMounted(async () => {
+  setFavouriteMovies()
+
   try {
     const currentMovie = await getMovie(movieId)
     movie.value = currentMovie
