@@ -33,12 +33,15 @@ const onSearchClick = () => {
   emit('search', searchTerm.value)
 }
 const onInput = () => {
-  if (searchTermIsEmpty.value) {
+  if (!searchTerm.value) {
     emit('search', '')
   }
 }
+const searchTermIsOnlyWhiteSpaces = computed(() => {
+  return /^\s*$/.test(searchTerm.value)
+})
 const searchTermIsEmpty = computed(() => {
-  return !searchTerm.value || /^\s*$/.test(searchTerm.value)
+  return !searchTerm.value || searchTermIsOnlyWhiteSpaces.value
 })
 const showButton = computed(() => {
   return !searchTermIsEmpty.value && searchTerm.value.length > 3
