@@ -109,6 +109,11 @@ export const useMovies = () => {
     )
   }
 
+  /**
+   * Using localStorage for simplicity but it is not a reliable storage since JSON.parse and JSON.stringify are expensive when having big
+   * arrays. In a real world scenario the favourites would need to be stored in a database and if that's not possible, I think IndexedDB
+   * could be a more reliable store.
+   */
   const handleFavourites = (movie: FavouriteMovie) => {
     if (!favouriteMovies.value.length) {
       setFavouriteMovie(movie)
