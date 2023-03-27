@@ -3,7 +3,7 @@
     <div class="movie-tile flex flex-col rounded-2xl p-4 h-full tile-shadow">
       <figure class="movie-tile__poster">
         <nuxt-img
-          class="w-full md:max-h-[320px] object-cover"
+          class="w-full md:max-h-[320px] object-cover aspect-[265/320]"
           :src="posterUrl"
           height="320"
           loading="lazy"
