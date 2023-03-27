@@ -1,21 +1,23 @@
 <template>
   <section class="movies-list">
-    <client-only>
-      <MoviesGrid :movies="moviesList">
-        <template v-if="errorMessage" #error>
-          <p class="text-red text-center mb-5">{{ errorMessage }}</p>
-        </template>
-        <template v-if="noResults" #error>
-          <p class="text-center mb-5">{{ emptyMessage }}</p>
-        </template>
-      </MoviesGrid>
-      <Pagination
-        v-if="showPagination"
-        :total-pages="totalPages"
-        :total="totalResults"
-        @pageUpdated="onPageUpdated"
-      />
-    </client-only>
+    <MoviesSearchInput
+      v-if="listType !== 'favourites'"
+      @search="onMovieSearch"
+    />
+    <MoviesGrid :movies="moviesList">
+      <template v-if="errorMessage" #error>
+        <p class="text-red text-center mb-5">{{ errorMessage }}</p>
+      </template>
+      <template v-if="noResults" #error>
+        <p class="text-center mb-5">{{ emptyMessage }}</p>
+      </template>
+    </MoviesGrid>
+    <Pagination
+      v-if="showPagination"
+      :total-pages="totalPages"
+      :total="totalResults"
+      @pageUpdated="onPageUpdated"
+    />
   </section>
 </template>
 
@@ -26,7 +28,7 @@ const props = defineProps({
   listType: String,
 })
 const {
-  getMovies,
+  handleMoviesFetching,
   setFavouriteMovies,
   getFavouritesPaginationParams,
   paginateFavourites,
@@ -39,6 +41,7 @@ const totalPages = ref(1)
 const totalResults = ref(1)
 const currentPage = ref(1)
 const loading = ref(false)
+const searchTerm = ref('')
 
 const setListParams = (response) => {
   movies.list = response.results ? response.results : []
@@ -52,7 +55,7 @@ const setFavouritesPagination = () => {
   setListParams(pagination)
 }
 
-const fetchMovies = async (page = 1) => {
+const fetchMovies = async (page = 1, fetchType = 'index', searchTerm = '') => {
   try {
     loading.value = true
     movies.list = []
@@ -60,7 +63,7 @@ const fetchMovies = async (page = 1) => {
     if (props.listType === 'favourites') {
       setFavouritesPagination()
     } else {
-      const response = await getMovies(page)
+      const response = await handleMoviesFetching(fetchType, page, searchTerm)
 
       setListParams(response)
     }
@@ -81,7 +84,21 @@ onMounted(async () => {
 const onPageUpdated = async (page) => {
   currentPage.value = page
 
-  fetchMovies(page)
+  if (searchTerm.value) {
+    fetchMovies(page, 'search', searchTerm.value)
+  } else {
+    fetchMovies(page)
+  }
+}
+
+const onMovieSearch = async (term) => {
+  searchTerm.value = term
+
+  if (term) {
+    fetchMovies(1, 'search', term)
+  } else {
+    fetchMovies()
+  }
 }
 
 const moviesList = computed(() => {

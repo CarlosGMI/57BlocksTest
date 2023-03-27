@@ -42,11 +42,15 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 
 const visibleButtons = 3
 const emit = defineEmits(['pageUpdated'])
 const props = defineProps({
+  page: {
+    type: Number,
+    default: 1,
+  },
   totalPages: {
     type: Number,
     required: true,
@@ -56,7 +60,7 @@ const props = defineProps({
     required: true,
   },
 })
-const currentPage = ref(1)
+const currentPage = ref(props.page || 1)
 
 const startPage = computed(() => {
   if (currentPage.value === 1) {
@@ -123,6 +127,13 @@ const isPageActive = (page) => {
 const pageClasses = (page) => {
   return isPageActive(page) ? 'bg-blue' : ''
 }
+
+// watch(
+//   () => props.page,
+//   (val) => {
+//     currentPage.value = val
+//   }
+// )
 </script>
 
 <style scoped>

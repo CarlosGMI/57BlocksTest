@@ -19,10 +19,15 @@
   transition: background 0.3s linear;
 }
 
-.btn--primary:hover {
+.btn--primary:hover:not(:disabled) {
   background: theme('colors.black');
   border-color: theme('colors.white');
   color: theme('colors.white');
+}
+
+.btn--primary:disabled {
+  background: theme('colors.grey');
+  color: theme('colors.charcoal');
 }
 
 .btn--secondary {

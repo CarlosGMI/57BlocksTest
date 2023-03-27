@@ -29,6 +29,31 @@ export const useMovies = () => {
     favouriteMovies.value = newMovies
   }
 
+  const handleMoviesFetching = async (
+    fetchType: string,
+    page: Number = 1,
+    searchTerm: string = ''
+  ) => {
+    let response
+
+    switch (fetchType) {
+      case 'index':
+        response = await getMovies(page)
+
+        break
+
+      case 'search':
+        response = await searchMovie(searchTerm, page)
+
+        break
+
+      default:
+        break
+    }
+
+    return response
+  }
+
   const getMovies = async (page: Number = 1) => {
     const data = await $fetch('/api/movies', {
       query: {
@@ -43,6 +68,17 @@ export const useMovies = () => {
     const data = await $fetch(`/api/movies/${id}`, {
       query: {
         id,
+      },
+    })
+
+    return data
+  }
+
+  const searchMovie = async (searchTerm: string, page: Number) => {
+    const data = await $fetch('/api/movies/search', {
+      query: {
+        page,
+        query: searchTerm,
       },
     })
 
@@ -98,7 +134,7 @@ export const useMovies = () => {
   }
 
   return {
-    getMovies,
+    handleMoviesFetching,
     getMovie,
     getMoviePosterFromPath,
     setFavouriteMovies,
