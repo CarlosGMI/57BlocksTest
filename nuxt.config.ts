@@ -11,7 +11,7 @@ export default defineNuxtConfig({
     ),
     movieDbApiKey: process.env.MOVIEDB_API_KEY,
   },
-  modules: ['@nuxtjs/tailwindcss', '@nuxt/image-edge', '@pinia/nuxt'],
+  modules: ['@nuxtjs/tailwindcss', '@nuxt/image-edge'],
   css: ['@/assets/styles/index.css'],
   app: {
     pageTransition: { name: 'page', mode: 'out-in' },
