@@ -3,6 +3,7 @@
     <ul class="list-none flex gap-2 bg-white py-2 px-5 rounded-2xl tile-shadow">
       <li class="mr-4">
         <button
+          id="first-page-button"
           type="button"
           class="hover:bg-blue px-2 rounded-3xl"
           :class="buttonClasses('first')"
@@ -15,6 +16,7 @@
       </li>
       <li v-for="(page, index) in pages" :key="index">
         <button
+          :id="`page-button-${page.name}`"
           type="button"
           class="px-2 rounded-[100%] hover:bg-blue min-w-[26px] min-h-[26px]"
           :class="pageClasses(page.name)"
@@ -27,6 +29,7 @@
       </li>
       <li class="ml-4">
         <button
+          id="last-page-button"
           type="button"
           class="hover:bg-blue px-2 rounded-3xl"
           :class="buttonClasses('last')"
