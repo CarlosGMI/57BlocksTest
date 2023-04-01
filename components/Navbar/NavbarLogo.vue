@@ -4,11 +4,6 @@
     to="/"
     aria-label="Home Link"
   >
-    <nuxt-img
-      src="/img/57blocks-blackLogo.svg"
-      width="34"
-      alt="57Blocks Logo"
-    />
-    <p class="uppercase">57Blocks</p>
+    <nuxt-img src="/img/blackLogo.svg" alt="Test Logo" />
   </nuxt-link>
 </template>
