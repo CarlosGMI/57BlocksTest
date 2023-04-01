@@ -1,12 +1,12 @@
-# 57Blocks Frontend Test
+# Nuxt 3 Test App
 
 ![optimized](https://user-images.githubusercontent.com/22606306/228073794-6f07fa75-10b6-4f7e-a509-389a6103976f.gif)
 
-This is a technical test for a Frontend Developer position at 57Blocks. This app uses Nuxt 3 as Vue.js framework and the [MovieDB API](https://developers.themoviedb.org/3/getting-started/introduction) to display a list of popular movies.
+This is a test app to try on Nuxt 3. This app uses the [MovieDB API](https://developers.themoviedb.org/3/getting-started/introduction) to display a list of popular movies.
 
 ## Deployed to Vercel
 
-https://57-blocks-test.vercel.app/
+https://carlosgmi-nuxt3-test-app.vercel.app/
 
 ## Setup
 
