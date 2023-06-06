@@ -1,7 +1,5 @@
 # Nuxt 3 Test App
 
-![optimized](https://user-images.githubusercontent.com/22606306/228073794-6f07fa75-10b6-4f7e-a509-389a6103976f.gif)
-
 This is a test app to try on Nuxt 3. This app uses the [MovieDB API](https://developers.themoviedb.org/3/getting-started/introduction) to display a list of popular movies.
 
 ## Deployed to Vercel
